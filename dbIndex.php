@@ -11,37 +11,43 @@ $search = isset($_POST['search']);
 function createTable($create) {
 
     if ($create) {
-        $ct_name = $_POST['ct_name'];
-        $ct_col1 = $_POST['ct_col1'];
-        $ct_col2 = $_POST['ct_col2'];
-        $ct_col3 = $_POST['ct_col3'];
-        $ct_col4 = $_POST['ct_col4'];
+        $tb_name = $_POST['tb_name'];
+        $tb_col1 = $_POST['tb_col1'];
+        $tb_col2 = $_POST['tb_col2'];
+        $tb_col3 = $_POST['tb_col3'];
+        $tb_col4 = $_POST['tb_col4'];
          
-        
-
-
-
+        $sql_tb_table = "CREATE TABLE `$tb_name` ('$tb_col1' varchar(25), '$tb_col2' varchar(25), '$tb_col3' varchar(25), '$tb_col4' varchar(25);"; 
 
     }
 
 }
 
 // FUNCTION FOR INSERTING VALUES IN A TABLE
-function insertTable($insert) {
+function insertTable($insert,$create) {
 
-    if ($insert) {
+    if ($insert || $create) {
+        // Columns
+        $tb_col1 = $_POST['tb_col1'];
+        $tb_col2 = $_POST['tb_col2'];
+        $tb_col3 = $_POST['tb_col3'];
+        $tb_col4 = $_POST['tb_col4'];
+
+        // Insert values
         $ins_name = $_POST['ins_name'];
-        $ins_col1 = $_POST['ins_col1'];
-        $ins_col2 = $_POST['ins_col2'];
-        $ins_col3 = $_POST['ins_col3'];
-        $ins_col4 = $_POST['ins_col4'];
-
-
+        $ins_val1 = $_POST['ins_val1'];
+        $ins_val2 = $_POST['ins_val2'];
+        $ins_val3 = $_POST['ins_val3'];
+        $ins_val4 = $_POST['ins_val4'];
+        
+        // Query
+        $sql_ins_table = "INSERT INTO `$ins_name` (`$tb_col1`, `$tb_col2`, `$tb_col3`, `$tb_col4`) VALUES ('$ins_val1', '$ins_val2', '$ins_val3', '$ins_val4');";
 
 
     }
 
 }
+
 
 // FUNCTION FOR SEARCHING
 function searchTable($search) {
@@ -72,12 +78,12 @@ function searchTable($search) {
         <fieldset>
             <!-- Create Table Form -->
             <legend>Create Table</legend>
-            <input type="text" name="ct_name" placeholder="Table Name">
+            <input type="text" name="tb_name" placeholder="Table Name">
             <br>
-            <input type="text" name="ct_col1" placeholder="Column 1">
-            <input type="text" name="ct_col2" placeholder="Column 2">
-            <input type="text" name="ct_col3" placeholder="Column 3">
-            <input type="text" name="ct_col4" placeholder="Column 4">
+            <input type="text" name="tb_col1" placeholder="Column 1">
+            <input type="text" name="tb_col2" placeholder="Column 2">
+            <input type="text" name="tb_col3" placeholder="Column 3">
+            <input type="text" name="tb_col4" placeholder="Column 4">
             <button type="submit" name="create" value="create">Create</button>
         </fieldset>
     </form>
@@ -85,12 +91,12 @@ function searchTable($search) {
     <form action="dbIndex.php" method="post">
         <legend>Insert Data</legend>
         <fieldset>
-            <input type="text" name="ins_name" placeholder="Insert Data">
+            <input type="text" name="ins_name" placeholder="Table Name">
             <br>
-            <input type="text" name="ins_col1" placeholder="Column 1">
-            <input type="text" name="ins_col2" placeholder="Column 2">
-            <input type="text" name="ins_col3" placeholder="Column 3">
-            <input type="text" name="ins_col4" placeholder="Column 4">
+            <input type="text" name="ins_val1" placeholder="Column 1">
+            <input type="text" name="ins_val2" placeholder="Column 2">
+            <input type="text" name="ins_val3" placeholder="Column 3">
+            <input type="text" name="ins_val4" placeholder="Column 4">
             <button type="submit" name="insert" value="insert">Insert</button>
         </fieldset>
     </form>
@@ -113,8 +119,8 @@ function searchTable($search) {
 
 <?php
 
- //ENTER VARIABLE HERE TO PUSH INTO DB
-
+// $sql = "INSERT INTO `customer` (`ID`, `fName`, `lName`, `Street`, `City`, `State`) VALUES ('10003', 'Leroy', 'Jenkins', 'Colonial Village', 'Hershey', 'VA');";
+// mysqli_query($conn, $sql);
 
 
 ?>
