@@ -12,10 +12,7 @@ if ($create) {
     mysqli_query($conn, $sql_table);
 }
 
-if ($_POST) {
-$sql_insert = "INSERT INTO `{$_POST['tb_name']}` (`{$_POST['tb_col1']}`, `{$_POST['tb_col2']}`, `{$_POST['tb_col3']}`, `{$_POST['tb_col4']}`) VALUES (`{$_POST['ins_val1']}`, `{$_POST['ins_val2']}`, `{$_POST['ins_val3']}`, `{$_POST['ins_val4']}`);";
-    
-}
+
 
 ?>
 <!DOCTYPE html>
@@ -37,6 +34,7 @@ $sql_insert = "INSERT INTO `{$_POST['tb_name']}` (`{$_POST['tb_col1']}`, `{$_POS
             <input type="text" name="tb_col2" placeholder="Column 2">
             <input type="text" name="tb_col3" placeholder="Column 3">
             <input type="text" name="tb_col4" placeholder="Column 4">
+            <br>
             <button type="submit" name="create" value="create">Create</button>
         </fieldset>
     </form>
@@ -48,10 +46,10 @@ $sql_insert = "INSERT INTO `{$_POST['tb_name']}` (`{$_POST['tb_col1']}`, `{$_POS
             <input type="text" name="ins_val2" placeholder="Column 2">
             <input type="text" name="ins_val3" placeholder="Column 3">
             <input type="text" name="ins_val4" placeholder="Column 4">
+            <br>
             <button type="submit" name="insert" value="insert">Insert</button>
         </fieldset>
     </form>
-    Search Data 
     <form action="dbIndex.php" method="post">
         <legend>Search</legend>
         <fieldset>
@@ -61,6 +59,7 @@ $sql_insert = "INSERT INTO `{$_POST['tb_name']}` (`{$_POST['tb_col1']}`, `{$_POS
             <input type="text" name="sch_col2" placeholder="Column 2">
             <input type="text" name="sch_col3" placeholder="Column 3">
             <input type="text" name="sch_col4" placeholder="Column 4">
+            <br>
             <button type="submit" name="search" value="search">Search</button>
         </fieldset>
     </form>
